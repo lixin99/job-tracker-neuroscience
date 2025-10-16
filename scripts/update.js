@@ -1,43 +1,68 @@
 const fs = require('fs');
 const path = require('path');
-
-// 模拟从多个招聘网站抓取数据
-async function fetchJobData() {
-  // 这里应该是实际的爬虫代码
-  // 现在使用模拟数据
-  const newJobs = [
-    {
-      id: Date.now(),
-      date: new Date().toISOString().split('T')[0],
-      unit: '深圳医学科学院 - 神经调控中心',
-      location: '广东',
-      position: '研究员',
-      requirements: '超声神经调控、电生理、动物行为学',
-      url: 'https://www.smart.org.cn/careers/researcher_new',
-      type: 'research'
-    }
-  ];
-  
-  return newJobs;
-}
+const { fetchRealJobData } = require('./advanced_crawler');
 
 // 更新数据文件
 async function updateJobData() {
-  try {
-    const dataPath = path.join(__dirname, '../data/jobs.json');
-    const existingData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-    
-    const newJobs = await fetchJobData();
-    const updatedJobs = {
-      last_updated: new Date().toLocaleString('zh-CN'),
-      jobs: [...newJobs, ...existingData.jobs.slice(0, 20)] // 保留最新20条
-    };
-    
-    fs.writeFileSync(dataPath, JSON.stringify(updatedJobs, null, 2));
-    console.log('数据更新成功！');
-  } catch (error) {
-    console.error('更新失败:', error);
-  }
+    try {
+        const dataPath = path.join(__dirname, '../data/jobs.json');
+        
+        console.log('开始更新招聘数据...');
+        
+        // 读取现有数据
+        let existingData;
+        try {
+            existingData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+            console.log(`现有数据量: ${existingData.jobs.length} 条记录`);
+        } catch (error) {
+            // 如果文件不存在或格式错误，初始化数据
+            existingData = { last_updated: '', jobs: [] };
+            console.log('初始化新的数据文件');
+        }
+        
+        // 获取真实招聘数据
+        const newJobs = await fetchRealJobData();
+        
+        // 合并数据（去重）
+        const existingIds = new Set(existingData.jobs.map(job => job.id));
+        const uniqueNewJobs = newJobs.filter(job => !existingIds.has(job.id));
+        
+        console.log(`新增岗位: ${uniqueNewJobs.length} 个`);
+        
+        // 更新数据
+        const updatedJobs = {
+            last_updated: new Date().toLocaleString('zh-CN'),
+            jobs: [...uniqueNewJobs, ...existingData.jobs].slice(0, 100) // 保留最新100条
+        };
+        
+        // 保存数据
+        fs.writeFileSync(dataPath, JSON.stringify(updatedJobs, null, 2));
+        console.log(`数据更新成功！总计 ${updatedJobs.jobs.length} 条记录`);
+        
+        return uniqueNewJobs;
+        
+    } catch (error) {
+        console.error('更新失败:', error);
+        return [];
+    }
 }
 
-updateJobData();
+// 如果直接运行此文件
+if (require.main === module) {
+    updateJobData().then(newJobs => {
+        if (newJobs.length > 0) {
+            console.log(`🎉 发现 ${newJobs.length} 个新岗位`);
+            newJobs.forEach(job => {
+                console.log(`   - ${job.unit}: ${job.position}`);
+            });
+        } else {
+            console.log('ℹ️  没有发现新岗位');
+        }
+        process.exit(0);
+    }).catch(error => {
+        console.error('❌ 脚本执行失败:', error);
+        process.exit(1);
+    });
+}
+
+module.exports = { updateJobData };
