@@ -1,0 +1,34 @@
+{
+  "name": "job-tracker",
+  "version": "1.0.0",
+  "description": "神经科学招聘信息自动追踪系统",
+  "main": "scripts/update.js",
+  "scripts": {
+    "update": "node scripts/update.js",
+    "start": "node scripts/update.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7",
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "招聘",
+    "神经科学",
+    "自动化",
+    "超声神经调控",
+    "神经电生理",
+    "脑机接口"
+  ],
+  "author": "您的名字",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/您的用户名/job-tracker"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
