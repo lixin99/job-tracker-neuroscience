@@ -22,11 +22,11 @@
     "神经电生理",
     "脑机接口"
   ],
-  "author": "您的名字",
+  "author": "Even Lee",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/您的用户名/job-tracker"
+    "url": "https://github.com/lixin99/job-tracker-neuroscience"
   },
   "engines": {
     "node": ">=18.0.0"
