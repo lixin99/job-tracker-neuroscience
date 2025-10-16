@@ -6,20 +6,80 @@
       "date": "2024-06-15",
       "unit": "深圳湾实验室 - 神经工程中心",
       "location": "广东",
-      "position": "博士后研究员",
-      "requirements": "超声神经调控、在体电生理记录经验",
-      "url": "https://www.szbl.ac.cn/career/postdoc_202311",
+      "position": "博士后研究员（神经调控方向）",
+      "requirements": "超声神经调控、在体电生理记录、神经环路研究",
+      "url": "https://www.szbl.ac.cn/join/join_index.html",
       "type": "research"
     },
     {
       "id": 2,
       "date": "2024-06-15",
+      "unit": "中国科学院深圳先进技术研究院 - 脑认知与脑疾病研究所",
+      "location": "广东",
+      "position": "神经电生理研究助理",
+      "requirements": "电生理记录、神经信号处理、动物行为实验",
+      "url": "https://www.siat.ac.cn/yjdw/bsh/",
+      "type": "research"
+    },
+    {
+      "id": 3,
+      "date": "2024-06-15",
       "unit": "华西医院神经内科",
       "location": "川渝",
       "position": "神经电生理医师",
-      "requirements": "经颅磁刺激、脑电图分析经验",
-      "url": "https://www.wchscu.cn/HR/Job_202312",
+      "requirements": "经颅磁刺激、脑电图分析、癫痫诊疗",
+      "url": "https://www.wchscu.cn/public/recruit.html",
       "type": "hospital"
+    },
+    {
+      "id": 4,
+      "date": "2024-06-15",
+      "unit": "重庆医科大学附属第一医院",
+      "location": "川渝",
+      "position": "神经外科科研岗",
+      "requirements": "脑机接口、神经调控、临床研究",
+      "url": "https://www.hospital-cqmu.com/contents/2546/3149.html",
+      "type": "hospital"
+    },
+    {
+      "id": 5,
+      "date": "2024-06-15",
+      "unit": "海南省人民医院神经内科",
+      "location": "海南",
+      "position": "神经电生理技师",
+      "requirements": "肌电图、脑电图、神经传导检查",
+      "url": "https://www.phhp.com.cn/Content/6586.html",
+      "type": "hospital"
+    },
+    {
+      "id": 6,
+      "date": "2024-06-14",
+      "unit": "中山大学附属第一医院神经科",
+      "location": "广东",
+      "position": "神经调控研究博士后",
+      "requirements": "深部脑刺激、帕金森病、神经调控机制",
+      "url": "https://www.gzsums.net/recruit.aspx",
+      "type": "hospital"
+    },
+    {
+      "id": 7,
+      "date": "2024-06-14",
+      "unit": "电子科技大学神经信息教育部重点实验室",
+      "location": "川渝",
+      "position": "脑机接口工程师",
+      "requirements": "神经信号处理、机器学习、脑电分析",
+      "url": "https://www.uestc.edu.cn/rsfw/rcxz.htm",
+      "type": "university"
+    },
+    {
+      "id": 8,
+      "date": "2024-06-14",
+      "unit": "海南大学生物医学工程学院",
+      "location": "海南",
+      "position": "神经工程研究员",
+      "requirements": "神经界面、生物材料、神经修复",
+      "url": "https://www.hainanu.edu.cn/stm/renshi/2023128/10877403.shtml",
+      "type": "university"
     }
   ]
 }
