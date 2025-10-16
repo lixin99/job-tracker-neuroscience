@@ -1,0 +1,46 @@
+name: Update Job Data
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 每天 UTC 2:00 (北京时间 10:00)
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+env:
+  EMAIL_USER: ${{ secrets.EMAIL_USER }}
+  EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+  NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v3
+      
+    - name: 设置Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 安装依赖
+      run: npm install
+        
+    - name: 运行数据更新
+      run: |
+        node scripts/update.js
+        
+    - name: 发送邮件通知
+      run: |
+        node scripts/send_daily_report.js
+        
+    - name: 提交更新
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "自动更新: 招聘数据与可视化 [$(date +'%Y-%m-%d %H:%M')]" || exit 0
+        git push
