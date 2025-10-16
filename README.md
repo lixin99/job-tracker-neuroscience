@@ -24,3 +24,4 @@ Track job applications
 2. 配置环境变量
 3. 启用GitHub Pages
 4. 手动触发首次运行
+访问地址：https://lixin99.github.io/job-tracker
