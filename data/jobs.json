@@ -1,0 +1,25 @@
+{
+  "last_updated": "2024-06-15 10:00:00",
+  "jobs": [
+    {
+      "id": 1,
+      "date": "2024-06-15",
+      "unit": "深圳湾实验室 - 神经工程中心",
+      "location": "广东",
+      "position": "博士后研究员",
+      "requirements": "超声神经调控、在体电生理记录经验",
+      "url": "https://www.szbl.ac.cn/career/postdoc_202311",
+      "type": "research"
+    },
+    {
+      "id": 2,
+      "date": "2024-06-15",
+      "unit": "华西医院神经内科",
+      "location": "川渝",
+      "position": "神经电生理医师",
+      "requirements": "经颅磁刺激、脑电图分析经验",
+      "url": "https://www.wchscu.cn/HR/Job_202312",
+      "type": "hospital"
+    }
+  ]
+}
